@@ -7,7 +7,11 @@ import Link from "next/link";
 async function getFeaturedProducts(): Promise<Products[]> {
   const response = await api("/products/featured", {
     next: {
-      revalidate: 60 * 60, //1hr
+      revalidate: 60 * 60, //1hr todos que acessarem a página vão receber o mesmo conteúdo
+      // cache: "force-cache" Força o cache
+      // cache: "no-cache", Não usa o cache
+      // cache: "default", Usa o cache padrão
+      // cache: "no-store", Não armazena o cache, carrega do zero
     },
   });
   const products = await response.json();

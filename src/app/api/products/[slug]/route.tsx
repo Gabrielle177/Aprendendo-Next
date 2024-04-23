@@ -2,11 +2,11 @@ import { z } from "zod";
 import data from "../data.json";
 
 export async function GET(
-  request: Request,
+  _: Request, //quando não usa a variável, usa-se o underline
   { params }: { params: { slug: string } }
 ) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  //   console.log(params) {params: {slug: 'moletom'}};
+  // console.log(params) {params: {slug: 'moletom'}};
   // console.log(params.slug);
 
   const slug = z.string().parse(params.slug);
